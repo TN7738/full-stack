@@ -1,17 +1,78 @@
-// const div = document.createElement("div");
-// div.setAttribute("title", "Outer Div");
-// const h1 = document.createElement("h1");
-// h1.innerHTML = "Hello World!";
-// div.appendChild(h1);
-// document.querySelector("#contents").appendChild(div);
+// const div = (
+//     <div title="Outer Div" className="wrapper">
+//         <h1>Hello World!</h1>
+//     </div>
+// );
 
-// const h1 = React.createElement("h1", {}, "Hello World!");
-// const div = React.createElement("div", { title: "Outer Div" }, h1);
-// ReactDOM.render(div, document.querySelector("#contents"));
+// Class based component
+class HelloWorld extends React.Component {
+    render() {
+        const continents = ["Asia", "Africa", "Russia"];
+        const helloContinents = Array.from(
+            continents,
+            (continent) => `Hello ${continent}!`
+        );
+        console.log("Array", helloContinents);
+        const str = helloContinents.join(" ");
+        console.log("String", str);
+        return (
+            <div title="Outer Div" className="wrapper">
+                <h1>From String: {str}</h1>
+                <p>From Array:</p>
+                {helloContinents.map((continent, indx) => (
+                    <h3 key={indx}>{continent}</h3>
+                ))}
+            </div>
+        );
+    }
+}
 
-const div = (
-    <div title="Outer Div" className="wrapper">
-        <h1>Hello World!</h1>
-    </div>
-);
-ReactDOM.render(div, document.querySelector("#contents"));
+// Function based component
+const HelloWorldFunctn = () => {
+    const continents = ["Asia", "Africa", "Russia"];
+    const helloContinents = Array.from(
+        continents,
+        (continent) => `Hello ${continent}!`
+    );
+    const str = helloContinents.join(" ");
+    return (
+        <>
+            <h1>From String: {str}</h1>
+            <p>From Array:</p>
+            {helloContinents.map((continent, indx) => (
+                <h3 key={indx}>{continent}</h3>
+            ))}
+        </>
+    );
+};
+
+// Child Component
+const IssueTable = ({ text }) => {
+    console.log(prop);
+    const { text } = prop;
+    console.log(text);
+    return <h4>This is {text}</h4>;
+};
+
+const IssueAdd = () => {
+    return <h4>This is IssueAdd</h4>;
+};
+
+const IssuuFilter = () => {
+    return <h4>This is IssuuFilter</h4>;
+};
+
+// Parent Component
+const IssueList = () => {
+    return (
+        <>
+            <IssueTable text={"IssueTable"} />
+            <IssueAdd />
+            <IssuuFilter />
+        </>
+    );
+};
+
+const element = <IssueList />;
+
+ReactDOM.render(element, document.querySelector("#contents"));
