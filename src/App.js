@@ -48,8 +48,6 @@ const HelloWorldFunctn = () => {
 
 // Child Component
 const IssueTable = ({ text }) => {
-    console.log(prop);
-    const { text } = prop;
     console.log(text);
     return <h4>This is {text}</h4>;
 };

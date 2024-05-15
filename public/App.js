@@ -32,13 +32,11 @@ const HelloWorldFunctn = () => {
 };
 
 // Child Component
-const IssueTable = prop => {
-  console.log(prop);
-  const {
-    text
-  } = prop;
+const IssueTable = ({
+  text
+}) => {
   console.log(text);
-  return /*#__PURE__*/React.createElement("h4", null, "This is ", prop.text);
+  return /*#__PURE__*/React.createElement("h4", null, "This is ", text);
 };
 const IssueAdd = () => {
   return /*#__PURE__*/React.createElement("h4", null, "This is IssueAdd");
